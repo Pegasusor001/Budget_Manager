@@ -36,8 +36,8 @@ export default function Login() {
           sessionStorage.setItem("token", 1);
           sessionStorage.setItem("firstName", user.first_name);
           sessionStorage.setItem("lastName", user.last_name);
-          setTimeout(() => setMass(10), 11000);
-          setTimeout(() => history.push("/profile"), 12500);
+          setTimeout(() => setMass(10), 1100);
+          setTimeout(() => history.push("/profile"), 1250);
 
           // call login function from authprovider to setUser
           login(email, password);

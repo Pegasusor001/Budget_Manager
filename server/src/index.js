@@ -6,9 +6,9 @@ const bodyParser = require("body-parser");
 const morgan = require('morgan');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
-// socket io and http import
+// socket io and http import, realtime web application for message
 const socketio = require('socket.io');
 const http = require('http');
 
@@ -39,10 +39,10 @@ io.on('connection', (socket) => {
     if(error) return callback(error);
 
     // backend send message
-    socket.emit('message', { user: 'BucketUp', text: `Hi, ${user.name}! Please wait the expert to answer your question`});
+    socket.emit('message', { user: 'Budget', text: `Hi, ${user.name}! Please wait the expert to answer your question`});
 
     // broadcast to all users that new user joined for frontend
-    socket.broadcast.to(user.room).emit('message', { user: 'BucketUp', text: `${user.name} has joined!` });
+    socket.broadcast.to(user.room).emit('message', { user: 'Budget', text: `${user.name} has joined!` });
 
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
     
@@ -88,10 +88,12 @@ const db = new Pool(dbParams);
 
 db.connect();
 
+// Home page, server
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// Separated Routes for each Resource
 const categoriesRoutes = require("./routes/categories");
 const usersRoutes = require("./routes/users");
 const expensesRoutes = require("./routes/expenses");
@@ -101,6 +103,7 @@ const messagesRoutes = require("./routes/messages");
 const analyticsRoutes = require("./routes/analytics");
 const { Socket } = require('dgram');
 
+// Mount all resource routes
 app.use("/api/categories", categoriesRoutes(db));
 app.use("/api/users", usersRoutes(db));
 app.use("/api/expenses", expensesRoutes(db));

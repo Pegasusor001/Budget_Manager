@@ -20,7 +20,7 @@ export default function AuthProvider(props) {
     setAuth(false);
   }
 
-  // authContext shares items tochildren
+  // authContext shares items to children
   const userData = {auth, user, login, logout};
 
   return (

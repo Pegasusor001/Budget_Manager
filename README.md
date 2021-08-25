@@ -61,3 +61,6 @@ in the client and server folders respectively, you can then navigate to localhos
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/) 
+
+## DATABASE ERD
+https://lucid.app/lucidchart/10d73d1b-a99b-4dd6-8853-ddbf30eaee0f/edit?beaconFlowId=A24983DB69ADA63D&page=0_0#

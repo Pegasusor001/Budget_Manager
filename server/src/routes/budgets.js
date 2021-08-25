@@ -100,8 +100,7 @@ const budgetsRoutes = (db) => {
     db.query(`
       SELECT categories.name as category_name, 
       categories.id as category_id, 
-      categories.spending_limit as spend_limit,
-      categories.name as category_name
+      categories.spending_limit as spend_limit
       FROM categories
       JOIN budgets ON categories.budget_id = budgets.id
       WHERE budgets.active = true AND budgets.user_id = $1
