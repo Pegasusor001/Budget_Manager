@@ -1,0 +1,38 @@
+.progress-container {
+  height: 2vw;
+  width: '100%';
+  background-color: lightgrey;
+  border-radius: 20vw;
+  margin: 50; 
+}
+
+
+.progress-label {
+  padding: 5;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.category-progress-bar {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.progress-bar-budget {
+  width: 60%;
+  margin: 1vw;
+}
+
+.card__title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .6em;
+}
+
+.category-margin {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

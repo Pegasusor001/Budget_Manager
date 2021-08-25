@@ -1,0 +1,67 @@
+.outer-container {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  height: 200vh;
+  background-color: white;
+  justify-content: flex-end;
+  border:1px #00588F;
+  margin-right: 5%;
+  bottom: 5%;
+  right: 5%;
+}
+.chat-close-button {
+  color: white;
+  background-color: #00588F;
+  border: none;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-shadow: 2px 7px 10px rgb(113, 104, 104);
+  border-radius: 8px;
+  height: 400%;
+  width: 30%;
+  z-index: 99;
+}
+
+.screen {
+  position: relative;
+}
+.innerdiv {
+  position: fixed;
+  bottom: 5px;
+  right: 0;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .chat-container {
+    width: 35%;
+    height: 45%;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1200px) {
+  .chat-container {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    height: 43%;
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 3000px) {
+  .chat-container {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    height: 45%;
+    width: 18%;
+  }
+}

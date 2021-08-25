@@ -1,38 +1,45 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Profile from "./pages/profile";
+import Analytics from "./pages/Analytics.jsx";
+import Messages from "./pages/messages";
+import Join from "./components/Join.jsx";
+import Chat from "./components/Chat.jsx";
+import Budget1 from "./pages/budget1";
+import Home from "./pages/Home";
+import { useContext } from "react";
+import { analyiticsContext } from "./providers/AnalyticsProvider";
+import { authContext } from "./providers/AnalyticsProvider";
+import AnalyticsProvider from "./providers/AnalyticsProvider";
+import AuthProvider from "./providers/AuthProvider";
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+// currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
-    );
-  }
+function App() {
+  return (
+    <>
+      <Router>
+          <AuthProvider>
+          <Route exact={true} path="/" component={Profile} /> 
+          <Route exact={true} path="/login" component={Login} />  
+          <Route exact={true} path="/register" component={Register} />
+          <Route exact={true} path="/profile" component={Profile} />
+          <Route exact={true} path="/budget" component={Budget1} />
+          <Route exact={true} path="/expertjoin" component={Join} />
+          <Route exact={true} path="/chat" component={Chat} />
+          <Route exact={true} path="/messages" component={Messages} />
+          
+          <AnalyticsProvider>
+            <Route exact={true} path="/analytics" component={Analytics} />
+          </AnalyticsProvider>
+          </AuthProvider>
+      </Router>
+    </>
+  );
 }
 
 export default App;

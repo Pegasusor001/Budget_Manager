@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js",
+    "reset": "psql -U labber -d bucketup < ./src/db/schema/users.sql && psql -U labber -d bucketup < ./src/db/schema/budgets.sql && psql -U labber -d bucketup < ./src/db/schema/categories.sql && psql -U labber -d bucketup < ./src/db/schema/expenses.sql && psql -U labber -d bucketup < ./src/db/schema/goals.sql && psql -U labber -d bucketup < ./src/db/schema/messages.sql",
+    "seed": "psql -U labber -d bucketup < ./src/db/seeds/users.sql && psql -U labber -d bucketup < ./src/db/seeds/budgets.sql && psql -U labber -d bucketup < ./src/db/seeds/categories.sql && psql -U labber -d bucketup < ./src/db/seeds/expenses.sql && psql -U labber -d bucketup < ./src/db/seeds/goals.sql && psql -U labber -d bucketup < ./src/db/seeds/messages.sql"
+  },
+  "author": "",
+  "license": "ISC"
+}

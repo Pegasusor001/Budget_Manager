@@ -1,0 +1,127 @@
+canvas {
+  margin: 0;
+  padding: 0;
+}
+
+.user-login {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  
+}
+
+// .general {
+//   overflow: hidden;
+//   height: 100vh;
+//   width: 100vw;
+// }
+
+input.input-field {
+  background-color: white;
+  height: 45px;
+  font-size: 1.5rem;
+  border:2px solid black !important;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+.submit-button {
+  height: 35px;
+  width: 120px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #00588F;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 2px 2px 1px gray;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  height: 35px;
+  width: 115px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: white;
+  border: 2px solid #00588F;
+  border-radius: 5px;
+  color: #00588F;
+  box-shadow: 2px 2px 1px gray;
+  cursor: pointer;
+}
+
+.login {
+  margin-top: 10%;
+  position: relative;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  background-color:#00588F;
+  width: 40vh;
+  height: 60vh;
+  border-radius: 15px;
+  z-index: 1;
+  box-shadow: 2px 3px 10px rgb(113, 104, 104);
+}
+.face {
+  margin-top: 2%;
+  text-align: center;
+}
+
+.face-header {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.other-sign-in {
+  margin-top: 15px;
+  text-align: center;
+  svg{
+    margin: 10px 5px;
+  }
+}
+
+.other-sign-in-icon:hover {
+  font-weight: bold;
+  background-color: white;
+  border: 2px solid #00588F;
+  border-radius: 5px;
+  color: #00588F;
+  box-shadow: 2px 2px 1px gray;
+  cursor: pointer;
+}
+
+.falling-coins {
+  z-index: -1;
+  position: fixed;
+  height: 100vw;
+  width: 100vw;
+}
+
+.general {
+  background-image: url('./white-simple-gradient.png');
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.login-emperor {
+  margin-top: -65px;
+  background-image: url('./white-simple-gradient.png');
+  height: auto;
+  background-size: 100%;
+  z-index: -10;
+}

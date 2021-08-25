@@ -1,86 +1,63 @@
-## NOTE: This repo has not been updated in a while.
+# BucketUp
 
-You may find that the versions of React, Rails, and Ruby are _NOT_ the most current. Feel free to update this repo and make a PR with new versions. Also, please let me know if you run into any bugs.
+BucketUp is an LHL final project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
 
-# React + Rails No-Fluff Boilerplate
+   Using the latest front-end frameworks, and a robust express backend we've automated the boring stuff while still leaving room for the user to create a fully customized budget!
 
-A boilerplate project for anyone interested in making a project that uses React and Rails.
+![login page](https://github.com/CaseyQWood/Buckets/blob/master/client/docs/login-facemesh.gif)
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff.
+## Key Takeaways
+**[React](https://reactjs.org/)** - This project was our first full-stack application built using React and Express. Getting used to managing state, and the built-in prop system React uses was a hurdle at first. A few days in, we started using Material-UI we were blown away by how fast we could proto-type and add new functionality, after that we started flying.
 
-The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
+**ThreeJS** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
 
-## Hall of Fame
+![coins falling in a bucket](https://github.com/CaseyQWood/Buckets/blob/master/client/docs/bucket-animation-budget.gif)
 
-Here are some projects that have been built using this boilerplate.
+**Managing Data** - Over the course of the project we spent a lot of time working on ERD's and deciding how we could query and display useful data. It took a few refactors, but we learned an important lesson about trying to do two things at once. By separating concerns, and being cautious with how we mutated data the backend did come together.
 
-- [latercart](https://github.com/bonitac/latercart)
-- [Cards-Against-the-Internet](https://github.com/csx773/Cards-Against-the-Internet)
-- [Jetify](https://github.com/shadeying/Jetify)
-- [watchpoll](https://github.com/grey275/watchpoll)
-- [StartDuck](https://github.com/JerChuang/StartDuck)
-- [Change-App](https://github.com/ZHShang/Change-App)
+## Installation
 
-## Using the boilerplate
+To run the application locally fork, and clone the repository:
 
-First, fork this boilerplate so you get your own copy of it. Once you have done that, you can clone your new repo to your machine, and get started.
-
-You need **TWO** terminals for this.
-
-In one terminal, run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
-
-In the other terminal, `cd` into `client`. Run `npm install`. Rename the `.env.example` file to be called `.env`. Then run `npm start` and go to `localhost:3000` in your browser.
-
-In the browser, you can click on the button and see the data get loaded.
-
-If this doesn't work, please message me!
-
-## Next steps
-
-From here, you can start working on your project!
-
-On the Rails side, you may make new `resources` routes in your `routes.rb` file, e.g. :
-
-```rb
-namespace :api do
-  resources :dogs # to generate GET /api/dogs, POST /api/dogs, etc...
-end
+```bash
+git clone <SSH_Key> bucketUp
+```
+CD into the client folder:
+```bash
+cd bucketUp/client
+```
+Install required packages, from within the client folder run:
+```bash
+npm install
+```
+Repeat this process for the server folder:
+```bash
+cd ../server
+npm install
 ```
 
-Then you can make your various controllers, models, migrations, etc. as you need! The one funky thing is that instead of rendering an HTML view you'll be rendering JSON. [You can return anything from a Rails controller as JSON like this.](https://guides.rubyonrails.org/v5.2/layouts_and_rendering.html#rendering-json) See the example in my "tests_controller".
+That's it! Once you've run these commands you can run the application!
 
-On the React side, the important bit is that you make you make your AJAXy HTTP requests using something like `axios` or `superagent`. I've set this up to use `axios` already. Check the React code to see an example request being made on-click to the Rails server! You can make your HTTP requests to `/api/anything/you/want`, as long as the route exists on your Rails app.
+## Usage
 
-**NOTE:** I recommend that you namespace all your routes under `api` on the Rails side! Look at how I've done that in the `routes.rb` file, and also how the `tests_controller` is written as:
-
-```rb
-class Api::TestsController < ApplicationController
+To start the application run:
+```bash
+npm start
 ```
+in the client and server folders respectively, you can then navigate to localhost:3000 to view the app.
 
-and it lives in the `api` folder! Put all your controllers in there!
+## Features (images for each)
+**[Chat](https://socket.io/)** - Implemented using socket.io. 
+![live chat](https://github.com/CaseyQWood/Buckets/blob/master/client/docs/live-chat.gif) 
+**[3D Elements](https://threejs.org/)** - Implemented using ThreeJS.  
+**[Analytics](https://www.chartjs.org/)** - Charts are styled with CSS, generated with ChartJS.
+![analytics](https://github.com/CaseyQWood/Buckets/blob/master/client/docs/Screen%20Shot%202021-08-15%20at%209.48.57%20PM.png)
+**[Biometric Login](https://www.tensorflow.org/)** - Implemented using Tensorflow. Although a good first taste of machine learning, the face-scan is currently just for show as we didn't have time to train the model.
 
-## Deployment to Heroku
+## Contributors
+[Casey Wood](http://github.com/CaseyQWood)   
+[Mingfeng Li](http://github.com/MingfengLi0122)   
+[Brandon Rowlandson](http://github.com/Barndon99)
 
-This boilerplate is _almost_ all set up to deal with deploying to Heroku. If you have the Heroku CLI tools installed you can run `heroku create` to create the Heroku project.
-
-Then we must run two commands to tell Heroku to first build our React app, and _then_ build the Rails app.
-
-1. `heroku buildpacks:add heroku/nodejs --index 1`
-2. `heroku buildpacks:add heroku/ruby --index 2`
-
-Once you've done that, you can run `git push heroku master` to deploy your project any time you want! Note, however, that deploying to Heroku can be a _little_ slow since Heroku needs to build your React app. Just give it some time.
-
-Once it's deployed, you can run the following commands to manage your app:
-
-- `heroku run rake db:schema:load` to set up your database the first time
-- `heroku run rake db:migrate` for any additional migrations
-- `heroku run rake db:seed` for seeds
-- `heroku run rake db:rollback` to rollback a migration
-
-There are other commands, but these are good to get you started!
-
-To make your app work properly with React Router (if you end up using it) on Heroku, I've added a special route to the `routes.rb` file (`get '*path' ... `).
-
-## Contact
-
-Please contact me at `nima.boscarino@gmail.com` if you have any questions or requests, or post an issue to this repo.
+## License
+[MIT](https://choosealicense.com/licenses/mit/) 
