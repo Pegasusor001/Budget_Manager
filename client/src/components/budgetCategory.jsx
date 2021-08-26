@@ -86,8 +86,6 @@ export default function BudgetCategory(props) {
 
   
   return(
-   
-  
       <Card style={props.activeCategory === props.category_id ? {width: "calc((100% / 2) - 1em)", display: 'flex', height: '15em'} : {width: "calc((100% / 4) - 1em)", height: '15em'}} >
 
         <CardContent style={{width: '-webkit-fill-available'}}>

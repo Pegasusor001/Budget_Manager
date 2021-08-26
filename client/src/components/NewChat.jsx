@@ -18,7 +18,7 @@ const NewChat = (props) => {
   const lastName = sessionStorage.lastName;
   
   const [name, setName] = useState(`${firstName}, ${lastName}`);
-  const [room, setRoom] = useState("BucketUp");
+  const [room, setRoom] = useState("BUDGET");
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);

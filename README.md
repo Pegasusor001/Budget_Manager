@@ -1,6 +1,6 @@
-# BucketUp
+# BUDGET
 
-BucketUp is an LHL final project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
+BUDGET is an LHL final project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
 
    Using the latest front-end frameworks, and a robust express backend we've automated the boring stuff while still leaving room for the user to create a fully customized budget!
 
@@ -20,11 +20,11 @@ BucketUp is an LHL final project that makes budgeting a breeze. Our objective wi
 To run the application locally fork, and clone the repository:
 
 ```bash
-git clone <SSH_Key> bucketUp
+git clone <SSH_Key> Budget_manager
 ```
 CD into the client folder:
 ```bash
-cd bucketUp/client
+cd budget_manager/client
 ```
 Install required packages, from within the client folder run:
 ```bash

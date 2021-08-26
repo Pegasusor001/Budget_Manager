@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
 
     // emit message from frontend
     console.log('user sendmessge~!!!!', user);
-    // user.room = "BucketUp"
+    // user.room = "BUDGET"
     io.to(user.room).emit('message', { user: user.name, text: message });
 
     callback();
@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
     const user = removeUser(socket.id);
 
     if(user) {
-      io.to(user.room).emit('message', { user: 'BucketUp', text: `${user.name} has left.` });
+      io.to(user.room).emit('message', { user: 'BUDGET', text: `${user.name} has left.` });
       io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
     }
   })

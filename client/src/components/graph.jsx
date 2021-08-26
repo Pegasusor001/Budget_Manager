@@ -14,7 +14,7 @@ export default function BudgetActualExpected(props) {
         backgroundColor: '#F8574F',
       },
       {
-        label: 'Actual Budget',
+        label: 'Actual Spend',
         data: props.actual,
         backgroundColor: '#78D1F7',
       },

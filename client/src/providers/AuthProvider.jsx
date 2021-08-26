@@ -18,6 +18,9 @@ export default function AuthProvider(props) {
   const logout = () => {
     setUser({ email: "", name: "" });
     setAuth(false);
+    sessionStorage.setItem("token", '');
+    sessionStorage.setItem("firstName", '');
+    sessionStorage.setItem("lastName", '');
   }
 
   // authContext shares items to children

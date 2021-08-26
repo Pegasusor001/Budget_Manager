@@ -109,7 +109,7 @@ export default function NavBar(props) {
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button className={(classes.root, classes.button)}>
               <LocalAtmIcon />
-              BucketUp
+              BUDGET
             </Button>
           </Link>
           

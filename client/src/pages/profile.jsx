@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import {useHistory } from "react-router-dom";
 import "../styles/profile.scss";
 
 import BudgetActualExpected from "../components/graph";
@@ -82,7 +83,6 @@ export default function Profile() {
         name={goal.name}
         spendLimit={goal.amount_to_goal}
       />
-
     );
   });
 
@@ -119,7 +119,6 @@ export default function Profile() {
     return container
   }
 
-
   //Handles userInfo data for the Profile Page
   const expectedSpend = profileState.expectedSpends.find(ele => ele.active);
   const expectedBudget = expectedSpend ? expectedSpend.expected_total : 0;
@@ -136,6 +135,12 @@ export default function Profile() {
   const monthlyIncome = annualIncomeNum ? `$ ${annualIncomeNum.toFixed(2)}` : 0;
 
   const userInfo = <UserInfo income={monthlyIncome} expectedExpenses={expectedBudget} balance={totalRemainingFormatted} />;
+
+  // login before start
+  let history = useHistory();
+  if (!sessionStorage.token) {
+    history.push('/login')
+  }
 
   // currently have OrbitControls and Debug commented out as they are used to TS but not for production
   return (
@@ -172,16 +177,14 @@ export default function Profile() {
             <div className="right-col-profile">
 
             <div className="threeJS">
-            <Canvas shadows>
-                  {/* <OrbitControls /> */}
-
-                  <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
-                  <Suspense fallback={null}>
-                    <ShadowPlane position={[0, -1.8, 0]} />
-                    <SmallPile castShadow scale={0.4} rotation={[0,-0.5,0]} position={[0, -1.6, 0]}/>
-
-                  </Suspense>
-                </Canvas>
+              <Canvas shadows>
+                {/* <OrbitControls /> */}
+                <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+                <Suspense fallback={null}>
+                  <ShadowPlane position={[0, -1.8, 0]} />
+                  <SmallPile castShadow scale={0.4} rotation={[0,-0.5,0]} position={[0, -1.6, 0]}/>
+                </Suspense>
+              </Canvas>
             </div>
 
               <div className="goals-bars">
@@ -208,15 +211,12 @@ export default function Profile() {
               <div className="threeJS">
                 <Canvas shadows>
                   {/* <OrbitControls /> */}
-
                   <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
                   <Suspense fallback={null}>
                     <ShadowPlane position={[0, -3, 0]} />
                     <NewGraph scale={1.25} rotation={[0,-0.2,0]} castShadow position={[0, -3.3, 0]}/>
-
                   </Suspense>
                 </Canvas>
-
               </div>
 
               <div className="previous-budget-graph">
@@ -234,7 +234,6 @@ export default function Profile() {
 
                   </Suspense>
                 </Canvas>
-
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>

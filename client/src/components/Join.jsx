@@ -21,7 +21,7 @@ const Join = () => {
         </div>
         <div>
           <input
-            placeholder="BucketUp"
+            placeholder="BUDGET"
             className="joinInput mt-20"
             type="text"
             onChange={(event) => setRoom(event.target.value)}

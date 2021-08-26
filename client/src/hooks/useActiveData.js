@@ -57,6 +57,7 @@ export default function useActiveData(initial) {
         })
       });
   }
+  
 
   const deleteCategory = (id) => {
     return axios.delete(`http://localhost:3002/api/categories/${id}`)

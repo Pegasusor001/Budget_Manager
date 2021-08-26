@@ -22,8 +22,6 @@ const filterActiveBudget = (listOfBudgets, id) => {
   return container
 }
 
-
-
 export default function SplitButton(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
