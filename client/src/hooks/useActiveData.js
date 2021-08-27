@@ -75,6 +75,21 @@ export default function useActiveData(initial) {
       });
   };
 
+  const createNewBudget = (budget) => {
+    console.log("xxxxx")
+    return axios.post('http://localhost:3002/api/budgets/', budget)
+      .then(() => {
+        Promise.all([
+          axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
+        ]).then((all) => {
+          const categories = all[0].data;
+          const totalSpendCategories = all[1].data;
+          setState(prev => ({...prev, categories, totalSpendCategories}))
+        })
+      })
+  };
+
   const createNewCategory = (category) => {
     return axios.post('http://localhost:3002/api/categories/', category)
       .then(() => {
@@ -141,5 +156,5 @@ export default function useActiveData(initial) {
 
   
 
-  return { state, updateCurrentBudget, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense }
+  return { state, updateCurrentBudget, deleteExpense, deleteCategory, createNewBudget, createNewCategory, createNewExpense, editCategory, editExpense }
 }

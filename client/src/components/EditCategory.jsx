@@ -7,8 +7,8 @@ export default function NewCategory(props) {
   const name = React.useRef(null);
   const spending_limit = React.useRef(null);
 
-  const handleSubmit = (ele) => {
-    ele.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const category = {
       category_id: props.categoryId,
       updatedName: name.current.value,
@@ -22,7 +22,7 @@ export default function NewCategory(props) {
   return(
   <Popup open={false}
     trigger={
-              <EditIcon />
+      <EditIcon />
     }
     modal
     nested
@@ -42,7 +42,7 @@ export default function NewCategory(props) {
             <br></br>
             <button type="submit" className="new-category-button">Submit</button>
             <br></br>
-            <button className="new-category-button" onClick={close}>Done</button>
+            <button className="new-category-button" onClick={close}>Cancel</button>
           </form>
         </div>
       </div>
@@ -50,3 +50,18 @@ export default function NewCategory(props) {
   </Popup>
   );
 };
+
+{/* <Popup modal trigger={<button>click me</button>}>
+  {close => <content close={close}></content>}
+</Popup> */}
+
+// const [budget, setBudget] = useState({
+//   name: '',
+//   spending_limit: ''
+// })
+// function updateContent(value, key) {
+//   const budgetCopy = {...budget}
+//   budgetCopy[key] = value;
+//   setbudget(budgetCopy)
+// }
+// <input onChange={(event) => updateContent(event.target.value, "Name")}></input>

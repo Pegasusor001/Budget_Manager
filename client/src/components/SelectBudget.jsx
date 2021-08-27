@@ -11,22 +11,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import axios from 'axios';
 
-
-
-const filterActiveBudget = (listOfBudgets, id) => {
-  console.log('this is id',id)
-  console.log('this is list', listOfBudgets)
-  let container = ''
-
-  listOfBudgets.forEach(x => x.id === id ? container = x.name: console.log('false') )
-  return container
-}
-
 export default function SplitButton(props) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  
-
   const budgetNames = (listOfBudgets) => {
     let container = []
     listOfBudgets.forEach(budget => {
