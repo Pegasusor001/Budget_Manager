@@ -9,18 +9,18 @@ export default function DarkIcon(props) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/darkGraph.glb')
   return (
-    <group color={'red'} ref={group} {...props} dispose={null}>
-      <group color={'red'} rotation={[-Math.PI / 2, 0, 0]}>
-        <group color={'red'} rotation={[Math.PI / 2, 0, 0]}>
-          <group color={'red'} position={[0, 2.07, 0]} scale={1.12}>
-            <mesh color={'red'} geometry={nodes.Object_4.geometry} material={nodes.Object_4.material} />
-            <mesh color={'red'} geometry={nodes.Object_5.geometry} material={nodes.Object_5.material} />
+    <group color={'green'} ref={group} {...props} dispose={null}>
+      <group color={'green'} rotation={[-Math.PI / 2, 0, 0]}>
+        <group color={'green'} rotation={[Math.PI / 2, 0, 0]}>
+          <group color={'green'} position={[0, 2.07, 0]} scale={1.12}>
+            <mesh color={'green'} geometry={nodes.Object_4.geometry} material={nodes.Object_4.material} />
+            <mesh color={'green'} geometry={nodes.Object_5.geometry} material={nodes.Object_5.material} />
           </group>
-          <group  color={'red'}position={[0, 0.92, 0]} scale={[0.65, 0.78, 0.65]}>
-            <mesh color={'red'} geometry={nodes.Object_7.geometry} material={materials['1.005']} />
+          <group  color={'green'}position={[0, 0.92, 0]} scale={[0.65, 0.78, 0.65]}>
+            <mesh color={'green'} geometry={nodes.Object_7.geometry} material={materials['1.005']} />
           </group>
           <group position={[0, 1.83, 0.22]} rotation={[0, -1.57, 0]} scale={0.44}>
-            <mesh color={'red'} geometry={nodes.Object_9.geometry} material={materials['1.001']} />
+            <mesh color={'green'} geometry={nodes.Object_9.geometry} material={materials['1.001']} />
           </group>
         </group>
       </group>

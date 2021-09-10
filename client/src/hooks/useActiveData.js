@@ -27,18 +27,17 @@ export default function useActiveData(initial) {
   }, [])
 
   const updateCurrentBudget = () => {
-      Promise.all([
-        axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
-        axios.get(`http://localhost:3002/api/budgets/all/expenses/${userId}`),
-        axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
-      ]).then((all) => {
-        
-        const categories = all[0].data;
-        const expenses = all[1].data;
-        const totalSpendCategories = all[2].data;
-        const budget_id = all[2].data[0] ? all[2].data[0].budget_id : 0;
-        setState(prev => ({...prev, categories, expenses, totalSpendCategories, budget_id }))
-      })
+    Promise.all([
+      axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
+      axios.get(`http://localhost:3002/api/budgets/all/expenses/${userId}`),
+      axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
+    ]).then((all) => {
+      const categories = all[0].data;
+      const expenses = all[1].data;
+      const totalSpendCategories = all[2].data;
+      const budget_id = all[2].data[0] ? all[2].data[0].budget_id : 0;
+      setState(prev => ({...prev, categories, expenses, totalSpendCategories, budget_id }))
+    })
   
   }
 
@@ -76,16 +75,18 @@ export default function useActiveData(initial) {
   };
 
   const createNewBudget = (budget) => {
-    console.log("xxxxx")
     return axios.post('http://localhost:3002/api/budgets/', budget)
       .then(() => {
         Promise.all([
           axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/expenses/${userId}`),
           axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
         ]).then((all) => {
           const categories = all[0].data;
-          const totalSpendCategories = all[1].data;
-          setState(prev => ({...prev, categories, totalSpendCategories}))
+          const expenses = all[1].data;
+          const totalSpendCategories = all[2].data;
+          const budget_id = all[2].data[0] ? all[2].data[0].budget_id : 0;
+          setState(prev => ({...prev, categories, expenses, totalSpendCategories, budget_id }))
         })
       })
   };

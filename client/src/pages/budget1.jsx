@@ -22,12 +22,6 @@ import { Canvas } from '@react-three/fiber';
 
 import "../styles/budget.scss";
 
-// find the active budget name
-const filterActiveBudget = (listOfBudgets, id) => {
-  let container = listOfBudgets.find(budget => {return budget.id === id})
-  return container && container.name
-}
-
 const percentCalculator = (num, den) => {
   const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
   const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
@@ -46,7 +40,7 @@ const checkSpend = (spendArray, category) => {
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
-  const { budgetListState } = useBudgetList(); 
+  const { budgetListState, setBudgetListState } = useBudgetList(); 
   // an array of all budget
   const {state,updateCurrentBudget,  deleteExpense, deleteCategory, createNewBudget, createNewCategory, createNewExpense, editCategory, editExpense , setState} = useActiveData();
   // state includes current budget id, categories, expenses 
@@ -54,20 +48,6 @@ export default function Budget1() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
-  // Array of Budget Names, active budget as the first one
-  const budgetNames = listOfBudgets => {
-    let container = []
-    listOfBudgets.forEach(budget => {
-      budget.active ? container.unshift(budget.name) : container.push(budget.name)
-    })
-    return container
-  }
-
-  // check if the budget is active
-  const isActiveBudget = (element) => element === filterActiveBudget(budgetListState.budgetListData, state.budget_id);
-  // find the default index, find the first item that's active 
-  const defaultIndex = budgetNames(budgetListState.budgetListData).findIndex(isActiveBudget);
-  
   // toggle the details of a category. 
   const expand = (category_id) => {
     if (activeCategory !== 0) {
@@ -91,6 +71,7 @@ export default function Budget1() {
       end_date: `${year}-${month+1}-1`,
       active: false
     }
+    budgetListState.budgetListData.push(budget)
     createNewBudget(budget)
   }
 
@@ -116,14 +97,12 @@ export default function Budget1() {
     if (categoryId === activeCategory) {
       expensesArray.push(<NewExpense category_id={categoryId} onSave={createNewExpense}/>)
     };
-    
     return expensesArray;
   }
-
   
   //iterate through categories that belong to the current budget generating a category component for each
-  const newBudget = state.categories.map(category => {
-    console.log("WHAT IS THIS VALUE ", activeCategory);
+  const budgetCategories = state.categories.map(category => {
+    // console.log("WHAT IS THIS VALUE ", activeCategory);
     return(
       <BudgetCategory 
       activeCategory={activeCategory}
@@ -139,13 +118,12 @@ export default function Budget1() {
       )
     })
     
-    function Plane() {
+    const Plane = function() {
       const [ref] = usePlane(() => ({ mass: 0, rotation: [-Math.PI / 2, 0, 0], position: [0, -2, 0] }))
       return (
         <mesh ref={ref} />
         )
-      }
-      
+    }
   
   return (
     <>
@@ -174,7 +152,6 @@ export default function Budget1() {
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
             currentBudgetId={state.budget_id}
-            defaultId={defaultIndex}
             budgetList={budgetListState.budgetListData}
             updateCurrentBudget={updateCurrentBudget}
           />
@@ -193,7 +170,7 @@ export default function Budget1() {
         </div>
 
         <div className='category__container'>
-          {newBudget}
+          {budgetCategories}
         </div>
 
         <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>

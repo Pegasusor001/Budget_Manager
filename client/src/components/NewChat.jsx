@@ -62,8 +62,12 @@ const NewChat = (props) => {
   const [chatVis, setChatVis] = useState(true);
 
   const switchChatMode = () => {
-    if (chatVis === true) setChatVis(false);
-    else setChatVis(true);
+    if (chatVis === true) {
+      setChatVis(false)
+    }
+    else {
+      setChatVis(true)
+    };
   }
  
 

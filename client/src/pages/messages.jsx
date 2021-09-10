@@ -24,9 +24,6 @@ export default function Messages(props) {
       </mesh >
     )
   } 
- // implement messages for other actions 
- // add a delete button 
- // try to on load of page spinn the icon 
 
   return (
     <>
@@ -59,37 +56,3 @@ export default function Messages(props) {
     </>
   )
 }
-
-
-// const SimpleList = () => {
-//   // const classes = useStyles();
-
-//   return (
-//     <div >
-//       <List component="nav" aria-label="main mailbox folders">
-//         <ListItem button onClick={() => console.log('test')}>
-//           <ListItemIcon>
-//             <DraftsIcon />
-//           </ListItemIcon>
-//           <ListItemText primary="Inbox" />
-//         </ListItem>
-//         <Divider />
-//         <ListItem button>
-//           <ListItemIcon>
-//             <DraftsIcon />
-//           </ListItemIcon>
-//           <ListItemText primary="Drafts" />
-//         </ListItem>
-//       </List>
-      
-//       {/* <List component="nav" aria-label="secondary mailbox folders">
-//         <ListItem button>
-//           <ListItemText primary="Trash" />
-//         </ListItem>
-//         <ListItemLink href="#simple-list">
-//           <ListItemText primary="Spam" />
-//         </ListItemLink>
-//       </List> */}
-//     </div>
-//   );
-// }

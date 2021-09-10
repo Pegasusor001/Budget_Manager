@@ -15,5 +15,5 @@ export default function useBudgetList(initial) {
     });
   }, []);
 
-  return { budgetListState }
+  return { budgetListState, setBudgetListState }
 };

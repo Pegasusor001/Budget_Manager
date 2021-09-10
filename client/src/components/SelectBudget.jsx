@@ -40,7 +40,7 @@ export default function SplitButton(props) {
   };
 
   useEffect(() => {
-    axios.put(`http://localhost:3002/api/budgets/save/1`, {budgetData: props.budgetList[props.selectedIndex], currentBudgetId: props.currentBudgetId})
+    axios.put(`http://localhost:3002/api/budgets/save/changeActive`, {budgetData: props.budgetList[props.selectedIndex], currentBudgetId: props.currentBudgetId})
     .then((res) => {
       props.updateCurrentBudget()
     })
